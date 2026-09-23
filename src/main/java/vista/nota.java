@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
 
-package vistados;
+package vista;
 
 import javax.swing.JOptionPane;
-import vista.calculadora;
+import modelo.calculadora;
 /**
  *
  * @author AM
