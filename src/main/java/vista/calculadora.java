@@ -14,7 +14,7 @@ public class calculadora {
 
     private String id;
     private String nombre;
-    private double notaDesarollo;
+    private double notaDesarrollo; 
     private double notaMatematica;
     private double definitiva;
     private String aprobo;
@@ -22,9 +22,9 @@ public class calculadora {
     public calculadora(String id, String nombre, double notad, double notam) {
         this.id = id;
         this.nombre = nombre;
-        this.notaDesarollo = notad;
+        this.notaDesarrollo = notad;
         this.notaMatematica = notam;
-        this.calcularDefinitiva(); // Auto-calcular al crear la instancia
+        this.calcularDefinitiva();
     }
 
     public String getId() {
@@ -43,12 +43,12 @@ public class calculadora {
         this.nombre = nombre;
     }
 
-    public double getNotaDesarollo() {
-        return notaDesarollo;
+    public double getNotaDesarrollo() {
+        return notaDesarrollo;
     }
 
-    public void setNotaDesarollo(double notaDesarollo) {
-        this.notaDesarollo = notaDesarollo;
+    public void setNotaDesarrollo(double notaDesarrollo) {
+        this.notaDesarrollo = notaDesarrollo;
         this.calcularDefinitiva();
     }
 
@@ -62,8 +62,7 @@ public class calculadora {
     }
 
     public double calcularDefinitiva() {
-        definitiva = notaMatematica * 0.4 + notaDesarollo * 0.6;
-        // Asignar estado a la variable aprobo que antes daba null
+        definitiva = (notaMatematica * 0.4) + (notaDesarrollo * 0.6);
         if (definitiva >= 3.0) {
             aprobo = "Sí";
         } else {
@@ -73,6 +72,17 @@ public class calculadora {
     }
 
     public void mostrarNota() {
-        JOptionPane.showMessageDialog(null, "nombre: " + nombre + "\nid: " + id + "\nNota Definitiva:" + definitiva + "\n¿Aprobo?: "+ aprobo);
+        String mensaje = String.format(
+            "--- REPORTE DE NOTAS ---\n\n" +
+            "Nombre: %s\n" +
+            "ID: %s\n" +
+            "Nota Desarrollo (60%%): %.2f\n" +
+            "Nota Matemática (40%%): %.2f\n" +
+            "Nota Definitiva: %.2f\n" +
+            "¿Aprobó?: %s",
+            nombre, id, notaDesarrollo, notaMatematica, definitiva, aprobo
+        );
+
+        JOptionPane.showMessageDialog(null, mensaje, "Resultado Académico", JOptionPane.INFORMATION_MESSAGE);
     }
 }
