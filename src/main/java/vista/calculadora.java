@@ -3,12 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package vista;
+
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author AM
  */
-public class calculadora{
+public class calculadora {
 
     private String id;
     private String nombre;
@@ -22,6 +24,7 @@ public class calculadora{
         this.nombre = nombre;
         this.notaDesarollo = notad;
         this.notaMatematica = notam;
+        this.calcularDefinitiva(); // Auto-calcular al crear la instancia
     }
 
     public String getId() {
@@ -46,6 +49,7 @@ public class calculadora{
 
     public void setNotaDesarollo(double notaDesarollo) {
         this.notaDesarollo = notaDesarollo;
+        this.calcularDefinitiva();
     }
 
     public double getNotaMatematica() {
@@ -54,10 +58,17 @@ public class calculadora{
 
     public void setNotaMatematica(double notaMatematica) {
         this.notaMatematica = notaMatematica;
+        this.calcularDefinitiva();
     }
 
     public double calcularDefinitiva() {
         definitiva = notaMatematica * 0.4 + notaDesarollo * 0.6;
+        // Asignar estado a la variable aprobo que antes daba null
+        if (definitiva >= 3.0) {
+            aprobo = "Sí";
+        } else {
+            aprobo = "No";
+        }
         return definitiva;
     }
 
